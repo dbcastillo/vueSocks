@@ -7,7 +7,10 @@
       </div>
       <div class="product-info">
         <h1>{{ product }}</h1>
-        <p>{{ description }}</p>
+        <p v-if="inventory > 10">In Stock</p>
+        <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+        <p v-else>Out of Stock</p>
+        <p v-if="onSale && inventory > 0">On Sale!</p>
       </div>
     </div>
   </div>
@@ -20,5 +23,6 @@ import socksBlueImage from './assets/images/socks_blue.jpeg';
 
 const product = ref('Socks')
 const image = ref(socksGreenImage)
-const description = ref('These socks are made from 100% cotton.')
+const inventory = ref(1)
+const onSale = ref(true)
 </script>
